@@ -46,7 +46,10 @@ import { VehicleDetailComponent } from './vehicles/vehicle-detail/vehicle-detail
     ApiAuthorizationModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
+      //{ path: 'counter', component: CounterComponent },
+      { path: 'manufacturer', component: ManufacturerComponent },
+      { path: 'model', component: VmodelComponent },
+      { path: 'vehicles', component: VehiclesComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
     ])
   ],
