@@ -67,5 +67,15 @@ export class VehicleDetailComponent implements OnInit {
     console.log('Hello')
     this.manufacturerid = parseInt("5");
   }
+
+  onFileChanged(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      //this.labelImport.nativeElement.innerText = file.name;
+      //this.profileForm.patchValue({
+      //  picture: file,
+      //});
+    }
+  }
   
 }
