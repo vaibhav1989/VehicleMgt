@@ -1,1 +1,56 @@
-<p>vmodel-detail works!</p>
+<form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+  <input type="hidden" name="paymentDetailId" [value]="service.formData.id" />
+  <div class="form-group">
+    <label>MANUFACTURER NAME</label>
+    <!--<input class="form-control form-control-lg" placeholder="Full Name" name="manufacturerId"
+     #manufacturerId="ngModel" [(ngModel)]="service.formData.manufacturerId"
+     required [class.invalid]="manufacturerId.invalid && manufacturerId.touched">-->
+    <select class="form-control form-control-lg" name="manufacturerId" #manufacturerId="ngModel"  [(ngModel)]="service.formData.manufacturerId">
+       <option *ngFor="let item of list" [ngValue]=item.id>
+        {{item.manufacturerName}}
+      </option>
+
+    </select>
+
+    <!--<select id="department" name="department" [(ngModel)]="department"
+            class="form-control">
+      <option *ngFor="let item of list" [value]="item.id">
+        {{item.manufacturerName}}
+      </option>
+      </select>-->
+      <!--<input type="hidden" name="manufacturerId"
+             #manufacturerId="ngModel" [(ngModel)]="manufacturerid"
+             value="1" />-->
+
+  </div>
+  <div class="form-group">
+    <label>MODEL NAME</label>
+    <input class="form-control form-control-lg" placeholder="Model Name" name="modelName"
+           #modelName="ngModel" [(ngModel)]="service.formData.modelName"
+           required maxlength="16" minlength="1" [class.invalid]="modelName.invalid && modelName.touched">
+  </div>
+  <div class="form-group">
+    <label>Production Date</label>
+    <input class="form-control form-control-lg" placeholder="DD/MM/YYYY" name="productionDate"
+           #productionDate="ngModel" [(ngModel)]="service.formData.productionDate"
+           required [class.invalid]="productionDate.invalid && productionDate.touched">
+
+    <!--<input class="form-control" placeholder="yyyy-mm-dd"
+         name="productionDate" [(ngModel)]="service.formData.productionDate" ngbDatepicker #d="ngbDatepicker">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+  </div>-->
+  </div>
+  <!--<div class="form-row">
+    <div class="form-group col-md-6">
+      <label>SECURITY CODE</label>
+      <input type="password" class="form-control form-control-lg" placeholder="Security Code" name="securityCode"
+             #securityCode="ngModel" [(ngModel)]="service.formData.securityCode"
+             required maxlength="3" minlength="3" [class.invalid]="securityCode.invalid && securityCode.touched">
+    </div>
+
+  </div>-->
+  <div class="form-group">
+    <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">SUBMIT</button>
+  </div>
+</form>

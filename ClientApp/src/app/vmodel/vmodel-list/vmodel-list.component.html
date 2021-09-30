@@ -1,1 +1,23 @@
-<p>vmodel-list works!</p>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th>Id</th>
+      <th>Manufacturer Name</th>
+      <th>Model</th>
+      <th>Production Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pd of service.list">
+      <td (click)="populateForm(pd)">{{pd.id}}</td>
+      <td (click)="populateForm(pd)">{{pd.manufacturerName}}</td>
+      <td (click)="populateForm(pd)">{{pd.modelName}}</td>
+      <td (click)="populateForm(pd)">{{pd.productionDate}}</td>
+      <td>
+        <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd.id)">Delete</i>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

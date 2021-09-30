@@ -37,5 +37,11 @@ namespace VehicleMgt.Controllers
             })
             .ToArray();
         }
+
+        [HttpGet("[action]")]
+        public string[] GetSummaries()
+        {
+            return Summaries;
+        }
     }
 }

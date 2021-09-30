@@ -1,1 +1,26 @@
-<p>vehicle-list works!</p>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th>Id</th>
+      <th>Model</th>
+      <th>Year</th>
+      <th>Colour</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pd of service.list">
+      <td (click)="populateForm(pd)">{{pd.id}}</td>
+      <td (click)="populateForm(pd)">{{pd.modelName}}</td>
+      <td (click)="populateForm(pd)">{{pd.year}}</td>
+      <td (click)="populateForm(pd)">{{pd.colour}}</td>
+      <td (click)="populateForm(pd)">{{pd.status}}</td>
+
+      <td>
+        <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd.id)">Delete</i>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
