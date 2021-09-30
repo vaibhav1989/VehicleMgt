@@ -5,4 +5,6 @@ export class Vehicles {
   colour: string = '';
   status: number = 0;
   modelName: string = '';
+  yearCode: string = '';
+  statusCode: string = '';
 }

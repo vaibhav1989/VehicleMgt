@@ -19,25 +19,44 @@
   </div>
   <div class="form-group">
     <label>YEAR</label>
-    <input class="form-control form-control-lg" placeholder="Year" name="year"
+    <!--<input class="form-control form-control-lg" placeholder="Year" name="year"
            #year="ngModel" [(ngModel)]="service.formData.year"
-           required [class.invalid]="year.invalid && year.touched">
+           required [class.invalid]="year.invalid && year.touched">-->
+
+    <select class="form-control form-control-lg" name="year" #year="ngModel" [(ngModel)]="service.formData.year">
+      <option *ngFor="let yr of yearlist" [ngValue]=yr.id>
+        {{yr.text}}
+      </option>
+
+    </select>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label>COLOUR</label>
-      <input class="form-control form-control-lg" placeholder="Security Code" name="colour"
+      <!--<input class="form-control form-control-lg" placeholder="Colour" name="colour"
              #colour="ngModel" [(ngModel)]="service.formData.colour"
-             required [class.invalid]="colour.invalid && colour.touched">
+             required [class.invalid]="colour.invalid && colour.touched">-->
+      <select class="form-control form-control-lg" name="colour" #status="ngModel" [(ngModel)]="service.formData.colour">
+        <option *ngFor="let clr of colorlist" [ngValue]=clr.text>
+          {{clr.text}}
+        </option>
+
+      </select>
     </div>
     <div class="form-group col-md-6">
       <label>STATUS</label>
-      <input class="form-control form-control-lg" placeholder="Status" name="status"
-             #status="ngModel" [(ngModel)]="service.formData.status"
-             required [class.invalid]="status.invalid && status.touched">
+      <!--<input class="form-control form-control-lg" placeholder="Status" name="status"
+         #status="ngModel" [(ngModel)]="service.formData.status"
+         required [class.invalid]="status.invalid && status.touched">-->
+      <select class="form-control form-control-lg" name="status" #status="ngModel" [(ngModel)]="service.formData.status">
+        <option *ngFor="let st of statuslist" [ngValue]=st.id>
+          {{st.text}}
+        </option>
+
+      </select>
     </div>
 
-    <div class="form-group">
+    <!--<div class="form-group">
       <label for="picture">Picture</label>
       <div class="custom-file">
         <input type="file" class="custom-file-input" id="customFile"
@@ -47,7 +66,7 @@
       <div class="invalid-feedback" *ngIf="form.picture.touched && form.picture.invalid">
         <div *ngIf="form.picture.errors.required">Picture is required.</div>
       </div>
-    </div>
+    </div>-->
 
   </div>
   <div class="form-group">

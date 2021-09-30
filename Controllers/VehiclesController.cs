@@ -25,7 +25,49 @@ namespace VehicleMgt.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<IVehicles>>> GetVehicles()
         {
-            return await _context.Vehicles.Select(x => new VVehicles { Id = x.Id,Colour = x.Colour,ModelId = x.ModelId,Status= x.Status,Year=x.Year,ModelName = x.Model.ModelName  }).ToListAsync();
+
+            return await (from e in _context.Vehicles
+                          join p in _context.ConfigurationValue
+                          on e.Year equals p.Id
+                          join s in _context.ConfigurationValue
+                          on e.Status equals s.Id
+                          //join t in db.SalesTerritories
+                          //on s.TerritoryID equals t.TerritoryID
+                          //where t.CountryRegionCode == "CA"
+                          select new VVehicles
+                          {
+                              Id = e.Id ,
+                              Colour = e.Colour,
+                              ModelId = e.ModelId,
+                              Status = e.Status,
+                              Year = e.Year,
+                              ModelName = e.Model.ModelName,
+                              YearCode = p.Text,
+                              StatusCode = s.Text,
+                              
+                          }).ToListAsync();
+
+
+            //return await _context.Vehicles
+            //.Join(_context.ConfigurationValue,
+            //      p => p.Year,
+            //      e => e.Id,
+            //      (p, e) => new {
+            //         Id  = p.Id,
+            //          ModelId = p.ModelId,
+            //          Year = p.Year,
+            //          Status = p.Status,
+            //          ModelName = p.Model.ModelName,
+            //          YearCode = e.Text,
+
+            //      }
+            //      ).Join(_context.ConfigurationValue,
+            //    o => o.Status,
+            //    sal => sal.Id,
+            //    (o, sal) => new {
+            //        StatusCode = sal.Text
+            //    }).Select(x=> new VVehicles { Id =, Colour = x.Colour, ModelId = x.ModelId, Status = x.Status, Year = x.Year, ModelName = x.Model.ModelName }).ToListAsync();
+            //return await _context.Vehicles.Select(x => new VVehicles { Id = x.Id,Colour = x.Colour,ModelId = x.ModelId,Status= x.Status,Year=x.Year,ModelName = x.Model.ModelName  }).ToListAsync();
         }
 
         // GET: api/Vehicles/5

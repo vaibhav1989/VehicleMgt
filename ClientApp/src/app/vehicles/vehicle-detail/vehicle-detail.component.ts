@@ -14,10 +14,25 @@ export class VehicleDetailComponent implements OnInit {
   public manufacturerid: number = 1;
 
   list: Vmodels[];
+  yearlist: any[];
+  statuslist: any[];
+  colorlist: any[];
   constructor(public service: VehiclesService, http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     http.get<Vmodels[]>(baseUrl + 'api/models').subscribe(result => {
       this.list = result;
       console.log(this.list);
+    }, error => console.error(error));
+    http.get<any[]>(baseUrl + 'api/Common/GetConfigValues/cYear').subscribe(result => {
+      this.yearlist = result;
+      console.log(result);
+    }, error => console.error(error));
+    http.get<any[]>(baseUrl + 'api/Common/GetConfigValues/cVehicleStatus').subscribe(result => {
+      this.statuslist = result;
+      console.log(result);
+    }, error => console.error(error));
+    http.get<any[]>(baseUrl + 'api/Common/GetConfigValues/cColour').subscribe(result => {
+      this.colorlist = result;
+      console.log(result);
     }, error => console.error(error));
   }
 
