@@ -12,6 +12,15 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
+import { ManufacturerComponent } from './manufacturer/manufacturer.component';
+import { ManufacturerListComponent } from './manufacturer/manufacturer-list/manufacturer-list.component';
+import { ManufacturerDetailComponent } from './manufacturer/manufacturer-detail/manufacturer-detail.component';
+import { VmodelComponent } from './vmodel/vmodel.component';
+import { VmodelListComponent } from './vmodel/vmodel-list/vmodel-list.component';
+import { VmodelDetailComponent } from './vmodel/vmodel-detail/vmodel-detail.component';
+import { VehiclesComponent } from './vehicles/vehicles.component';
+import { VehicleListComponent } from './vehicles/vehicle-list/vehicle-list.component';
+import { VehicleDetailComponent } from './vehicles/vehicle-detail/vehicle-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +28,16 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    ManufacturerComponent,
+    ManufacturerListComponent,
+    ManufacturerDetailComponent,
+    VmodelComponent,
+    VmodelListComponent,
+    VmodelDetailComponent,
+    VehiclesComponent,
+    VehicleListComponent,
+    VehicleDetailComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
